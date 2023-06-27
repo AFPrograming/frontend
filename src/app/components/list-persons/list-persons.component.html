@@ -1,0 +1,34 @@
+<div class="container">
+    <div>
+        <h4>Listado de personas</h4>
+        <button type="button" class="btn btn-primary" routerLink="/add">Agregar Persona</button>    
+    </div>
+
+    <table *ngIf="listPersons.length > 0" class="table table-hover">
+   
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listPersons" class="table-active">
+              <td>{{ item.name}}</td>
+              <td>{{ item.address}}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.email }}</td>
+
+              <td>
+                <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button>
+                <button (click)="deletePerson(item.id!)" type="button" class="btn btn-secondary btn-sm ms-2">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       <h5 *ngIf="listPersons.length == 0">No hay personas para mostrar</h5>
+</div>
+

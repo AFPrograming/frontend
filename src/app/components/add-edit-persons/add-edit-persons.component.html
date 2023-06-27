@@ -1,0 +1,35 @@
+<div class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center">{{ operacion }} Persona</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addPerson()">
+                    <input formControlName="name" type="text" class="form-control" placeholder="Ingrese nombre">
+                    <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+                        El campo nombre es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="address" type="text" class="form-control mt-2" placeholder="Ingrese direccion">
+                    <span *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched">
+                        El campo direccion <strong>requerido</strong>
+                    </span>
+                    <input formControlName="phone" type="text" class="form-control mt-2" placeholder="Ingrese telefono">
+                    <span *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched">
+                        El campo telefono es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="email" type="text" class="form-control mt-2" placeholder="Ingrese email">
+                    <span *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
+                        El campo email es <strong>requerido</strong>
+                    </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button routerLink="/" type="button" class="btn btn-secondary">Volver</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
